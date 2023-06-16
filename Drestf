@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Agendamento de Serviço</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    form {
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input, select {
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 5px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("appointmentForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
+        var message = "Nome: " + name + "%0A" + "WhatsApp: " + phone;
+        var url = "https://api.whatsapp.com/send?phone=5591982741753&text=" + encodeURIComponent(message);
+        window.open(url, "_blank");
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Agendamento de Serviço</h1>
+  <form id="appointmentForm">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="phone">WhatsApp:</label>
+    <input type="text" id="phone" name="phone" required>
+    <button type="submit">Agendar via WhatsApp</button>
+  </form>
+</body>
+</html>
